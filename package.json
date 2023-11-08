@@ -1,0 +1,41 @@
+{
+  "name": "shutter-sdk",
+  "version": "1.0.0",
+  "description": "",
+  "exports": {
+    ".": {
+      "import": "./lib.esm/index.js",
+      "default": "./lib.commonjs/index.js"
+    }
+  },
+  "main": "./lib.commonjs/index.js",
+  "module": "./lib.esm/index.js",
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "auto-build": "npm run build -- -w",
+    "build": "tsc --build ./tsconfig.esm.json",
+    "build-all": "npm run build && npm run build-commonjs",
+    "build-clean": "npm run clean && npm run build-all",
+    "build-commonjs": "tsc --build ./tsconfig.commonjs.json",
+    "lint": "eslint --ext .js,.ts",
+    "format": "prettier --ignore-path .gitignore --write \"**/*.+(js|ts|json)\"",
+    "clean": "rm -rf lib.commonjs lib.esm && cp -r misc/basedirs/* .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^6.10.0",
+    "@typescript-eslint/parser": "^6.10.0",
+    "eslint": "^8.53.0",
+    "eslint-config-prettier": "^9.0.0",
+    "prettier": "^3.0.3",
+    "typescript": "^5.2.2"
+  },
+  "dependencies": {
+    "ethers": "^6.8.1"
+  }
+}
