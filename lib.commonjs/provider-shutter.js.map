@@ -1,1 +1,1 @@
-{"version":3,"file":"provider-shutter.js","sourceRoot":"","sources":["../src.ts/provider-shutter.ts"],"names":[],"mappings":";;;;;;;;;;;;AAAA,mCAEgB;AAMhB,MAAa,eAAgB,SAAQ,2BAAkB;IAE7C,KAAK,CAAC,OAA+C;;YAEvD,OAAO,EAAE,CAAA;QACb,CAAC;KAAA;CACJ;AAND,0CAMC"}
+{"version":3,"file":"provider-shutter.js","sourceRoot":"","sources":["../src.ts/provider-shutter.ts"],"names":[],"mappings":";;;AAAA,mCAEe;AAEf,MAAa,eAAgB,SAAQ,wBAAe;CACnD;AADD,0CACC"}
