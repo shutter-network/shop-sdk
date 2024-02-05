@@ -13,7 +13,7 @@ import { abi as KeyBroadcastContract } from './abis/KeyBroadcastContract.sol/Key
 import { ShutterProvider } from './provider-shutter'
 
 import { encrypt, init } from '@shutter-network/shutter-crypto'
-import { getAddress } from 'ethers/lib.esm'
+import { getAddress } from 'ethers'
 import { currentEnv, EnvSpecificArg } from './types'
 
 const Primitive = "bigint,boolean,function,number,string,symbol".split(/,/g);
