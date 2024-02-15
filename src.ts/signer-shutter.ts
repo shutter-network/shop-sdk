@@ -39,7 +39,6 @@ function deepCopy<T = any>(value: T): T {
   throw new Error(`should not happen: ${ value } (${ typeof(value) })`);
 }
 
-
 export class SignerShutter extends JsonRpcSigner {
   wasmUrl: EnvSpecificArg<typeof currentEnv>;
   keyperSetManagerAddress: string;
@@ -64,12 +63,28 @@ export class SignerShutter extends JsonRpcSigner {
     return result
   }
 
-  async getEonKey(blockNumber: number): Promise<string> {
-    const keyBroadcastContract = new Contract(this.keyBroadcastAddress, KeyBroadcastContract, this.provider)
-    const result = await keyBroadcastContract.getEonKey(blockNumber)
-    return result
+  async getCurrentEonKey(): Promise<string> {
+      const blockNumber = await this.provider.getBlockNumber()
+      return this.getEonKeyForBlock(blockNumber)
   }
 
+  async getEonKeyForBlock(block: number): Promise<string> {
+      const eon = await this.getEonForBlock(block);
+      return this.getEonKey(eon)
+  }
+
+  async getEonForBlock(block: number): Promise<number> {
+      const keyperSetManager = new Contract(this.keyperSetManagerAddress, KeyperSetManager, this.provider)
+      console.log(keyperSetManager);
+      return keyperSetManager.getKeyperSetIndexByBlock(block);
+  }
+
+  async getEonKey(eon: number): Promise<string> {
+    const keyBroadcastContract = new Contract(this.keyBroadcastAddress, KeyBroadcastContract, this.provider)
+    console.log(keyBroadcastContract);
+    const result = await keyBroadcastContract.getEonKey(eon)
+    return result
+  }
 
   async encryptOriginalTx(_tx: TransactionRequest): Promise<[Uint8Array, BigNumberish]> {
     const tx = deepCopy(_tx)
@@ -111,9 +126,10 @@ export class SignerShutter extends JsonRpcSigner {
       await Promise.all(promises)
     }
 
-    const eonKey = await this.getEonKey(0)
 
     const blockNumber = await this.provider.getBlockNumber()
+
+    const eonKey = await this.getEonKeyForBlock(blockNumber)
 
     await init(this.wasmUrl)
 

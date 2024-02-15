@@ -12,9 +12,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.ShutterProvider = void 0;
 const ethers_1 = require("ethers");
 const signer_shutter_1 = require("./signer-shutter");
-class ShutterProvider extends ethers_1.JsonRpcProvider {
-    constructor(shutterOptions, url, network, options) {
-        super(url, network, options);
+class ShutterProvider extends ethers_1.BrowserProvider {
+    constructor(shutterOptions, ethereum, network) {
+        super(ethereum, network);
         this.wasmUrl = shutterOptions.wasmUrl;
         this.keyperSetManagerAddress = (0, ethers_1.getAddress)(shutterOptions.keyperSetManagerAddress);
         this.inboxAddress = (0, ethers_1.getAddress)(shutterOptions.inboxAddress);

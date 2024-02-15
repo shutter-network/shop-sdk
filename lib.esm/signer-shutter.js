@@ -15,6 +15,7 @@ const Inbox_json_1 = require("./abis/Inbox.sol/Inbox.json");
 const KeyperSetManager_json_1 = require("./abis/KeyperSetManager.sol/KeyperSetManager.json");
 const KeyBroadcastContract_json_1 = require("./abis/KeyBroadcastContract.sol/KeyBroadcastContract.json");
 const shutter_crypto_1 = require("@shutter-network/shutter-crypto");
+const ethers_2 = require("ethers");
 const Primitive = "bigint,boolean,function,number,string,symbol".split(/,/g);
 function deepCopy(value) {
     if (value == null || Primitive.indexOf(typeof (value)) >= 0) {
@@ -38,23 +39,45 @@ function deepCopy(value) {
 class SignerShutter extends ethers_1.JsonRpcSigner {
     constructor(provider, address) {
         super(provider, address);
+        this.wasmUrl = provider.wasmUrl;
+        this.keyperSetManagerAddress = (0, ethers_2.getAddress)(provider.keyperSetManagerAddress);
+        this.inboxAddress = (0, ethers_2.getAddress)(provider.inboxAddress);
+        this.keyBroadcastAddress = (0, ethers_2.getAddress)(provider.keyBroadcastAddress);
     }
     isShutterPaused() {
         return __awaiter(this, void 0, void 0, function* () {
-            const provider = this.provider;
-            const keyperSet = new ethers_1.Contract(provider.keyperSetManagerAddress, KeyperSetManager_json_1.abi, this.provider);
-            const inbox = new ethers_1.Contract(provider.inboxAddress, Inbox_json_1.abi, this.provider);
+            const keyperSet = new ethers_1.Contract(this.keyperSetManagerAddress, KeyperSetManager_json_1.abi, this.provider);
+            const inbox = new ethers_1.Contract(this.inboxAddress, Inbox_json_1.abi, this.provider);
             const result = yield Promise.all([inbox.paused(), keyperSet.paused()]).then(([inboxPaused, keyperSetPaused]) => {
                 return inboxPaused || keyperSetPaused;
             });
-            console.log('result', result);
             return result;
         });
     }
-    getEonKey(blockNumber) {
+    getCurrentEonKey() {
         return __awaiter(this, void 0, void 0, function* () {
-            const keyBroadcastContract = new ethers_1.Contract(this.provider.keyBroadcastAddress, KeyBroadcastContract_json_1.abi, this.provider);
-            const result = yield keyBroadcastContract.getEonKey(blockNumber);
+            const blockNumber = yield this.provider.getBlockNumber();
+            return this.getEonKeyForBlock(blockNumber);
+        });
+    }
+    getEonKeyForBlock(block) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const eon = yield this.getEonForBlock(block);
+            return this.getEonKey(eon);
+        });
+    }
+    getEonForBlock(block) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const keyperSetManager = new ethers_1.Contract(this.keyperSetManagerAddress, KeyperSetManager_json_1.abi, this.provider);
+            console.log(keyperSetManager);
+            return keyperSetManager.getKeyperSetIndexByBlock(block);
+        });
+    }
+    getEonKey(eon) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const keyBroadcastContract = new ethers_1.Contract(this.keyBroadcastAddress, KeyBroadcastContract_json_1.abi, this.provider);
+            console.log(keyBroadcastContract);
+            const result = yield keyBroadcastContract.getEonKey(eon);
             return result;
         });
     }
@@ -93,9 +116,9 @@ class SignerShutter extends ethers_1.JsonRpcSigner {
             if (promises.length) {
                 yield Promise.all(promises);
             }
-            const eonKey = yield this.getEonKey(0);
             const blockNumber = yield this.provider.getBlockNumber();
-            yield (0, shutter_crypto_1.init)();
+            const eonKey = yield this.getEonKeyForBlock(blockNumber);
+            yield (0, shutter_crypto_1.init)(this.wasmUrl);
             const dataForShutterTX = [tx.to, (0, ethers_1.toBeHex)(BigInt(tx.value))];
             const sigma = new Uint8Array(32);
             const epochId = (0, ethers_1.toBeHex)(blockNumber);
@@ -116,7 +139,7 @@ class SignerShutter extends ethers_1.JsonRpcSigner {
             if (latestBlock == null) {
                 throw new Error('latest block not found');
             }
-            const inbox = new ethers_1.Contract(this.provider.inboxAddress, Inbox_json_1.abi, this);
+            const inbox = new ethers_1.Contract(this.inboxAddress, Inbox_json_1.abi, this);
             const [executionTx, gasLimitExecuteTx] = yield this.encryptOriginalTx(tx);
             const includeTx = yield inbox.submitEncryptedTransaction.populateTransaction(latestBlock.number + 2, executionTx, gasLimitExecuteTx, tx.to);
             // gasLimitExecuteTx should be some % higher, because the execution of the tx will
