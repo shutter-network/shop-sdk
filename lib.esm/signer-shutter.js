@@ -69,14 +69,12 @@ class SignerShutter extends ethers_1.JsonRpcSigner {
     getEonForBlock(block) {
         return __awaiter(this, void 0, void 0, function* () {
             const keyperSetManager = new ethers_1.Contract(this.keyperSetManagerAddress, KeyperSetManager_json_1.abi, this.provider);
-            console.log(keyperSetManager);
             return keyperSetManager.getKeyperSetIndexByBlock(block);
         });
     }
     getEonKey(eon) {
         return __awaiter(this, void 0, void 0, function* () {
             const keyBroadcastContract = new ethers_1.Contract(this.keyBroadcastAddress, KeyBroadcastContract_json_1.abi, this.provider);
-            console.log(keyBroadcastContract);
             const result = yield keyBroadcastContract.getEonKey(eon);
             return result;
         });
@@ -117,11 +115,12 @@ class SignerShutter extends ethers_1.JsonRpcSigner {
                 yield Promise.all(promises);
             }
             const blockNumber = yield this.provider.getBlockNumber();
-            const eonKey = yield this.getEonKeyForBlock(blockNumber);
+            const eonKey = yield this.getEonKeyForBlock(blockNumber + 2);
+            console.log(blockNumber + 2);
             yield (0, shutter_crypto_1.init)(this.wasmUrl);
             const dataForShutterTX = [tx.to, (0, ethers_1.toBeHex)(BigInt(tx.value))];
             const sigma = new Uint8Array(32);
-            const epochId = (0, ethers_1.toBeHex)(blockNumber);
+            const epochId = (0, ethers_1.toBeHex)(blockNumber + 2);
             const encryptedMessage = yield (0, shutter_crypto_1.encrypt)((0, ethers_1.getBytes)((0, ethers_1.encodeRlp)(dataForShutterTX)), (0, ethers_1.getBytes)(eonKey), (0, ethers_1.getBytes)((0, ethers_1.zeroPadValue)(epochId, 32)), sigma);
             return [encryptedMessage, tx.gasLimit];
         });

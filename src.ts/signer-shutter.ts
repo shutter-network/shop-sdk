@@ -75,13 +75,11 @@ export class SignerShutter extends JsonRpcSigner {
 
   async getEonForBlock(block: number): Promise<number> {
       const keyperSetManager = new Contract(this.keyperSetManagerAddress, KeyperSetManager, this.provider)
-      console.log(keyperSetManager);
       return keyperSetManager.getKeyperSetIndexByBlock(block);
   }
 
   async getEonKey(eon: number): Promise<string> {
     const keyBroadcastContract = new Contract(this.keyBroadcastAddress, KeyBroadcastContract, this.provider)
-    console.log(keyBroadcastContract);
     const result = await keyBroadcastContract.getEonKey(eon)
     return result
   }
@@ -129,13 +127,14 @@ export class SignerShutter extends JsonRpcSigner {
 
     const blockNumber = await this.provider.getBlockNumber()
 
-    const eonKey = await this.getEonKeyForBlock(blockNumber)
+    const eonKey = await this.getEonKeyForBlock(blockNumber + 2)
+    console.log(blockNumber + 2)
 
     await init(this.wasmUrl)
 
     const dataForShutterTX = [tx.to, toBeHex(BigInt(tx.value as string))]
     const sigma = new Uint8Array(32)
-    const epochId = toBeHex(blockNumber)
+    const epochId = toBeHex(blockNumber + 2)
     const encryptedMessage = await encrypt(
       getBytes(encodeRlp(dataForShutterTX as RlpStructuredDataish)),
       getBytes(eonKey),
