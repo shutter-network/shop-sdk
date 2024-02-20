@@ -12,6 +12,7 @@ export declare class SignerShutter extends JsonRpcSigner {
     getEonKeyForBlock(block: number): Promise<string>;
     getEonForBlock(block: number): Promise<number>;
     getEonKey(eon: number): Promise<string>;
+    hexKeyToArray(hexvalue: string): Uint8Array;
     encryptOriginalTx(_tx: TransactionRequest): Promise<[Uint8Array, BigNumberish]>;
     sendTransaction(tx: TransactionRequest): Promise<any>;
 }

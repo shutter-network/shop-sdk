@@ -79,6 +79,9 @@ class SignerShutter extends ethers_1.JsonRpcSigner {
             return result;
         });
     }
+    hexKeyToArray(hexvalue) {
+        return Uint8Array.from(Buffer.from(hexvalue, "hex"));
+    }
     encryptOriginalTx(_tx) {
         return __awaiter(this, void 0, void 0, function* () {
             const tx = deepCopy(_tx);
@@ -114,14 +117,26 @@ class SignerShutter extends ethers_1.JsonRpcSigner {
             if (promises.length) {
                 yield Promise.all(promises);
             }
-            const blockNumber = yield this.provider.getBlockNumber();
-            const eonKey = yield this.getEonKeyForBlock(blockNumber + 2);
-            console.log(blockNumber + 2);
+            const blockNumber = (yield this.provider.getBlockNumber()) + 2;
+            const eonKey = yield this.getEonKeyForBlock(blockNumber);
+            console.log("block/epoch", blockNumber);
+            console.log("eonkey", eonKey);
             yield (0, shutter_crypto_1.init)(this.wasmUrl);
             const dataForShutterTX = [tx.to, (0, ethers_1.toBeHex)(BigInt(tx.value))];
             const sigma = new Uint8Array(32);
-            const epochId = (0, ethers_1.toBeHex)(blockNumber + 2);
-            const encryptedMessage = yield (0, shutter_crypto_1.encrypt)((0, ethers_1.getBytes)((0, ethers_1.encodeRlp)(dataForShutterTX)), (0, ethers_1.getBytes)(eonKey), (0, ethers_1.getBytes)((0, ethers_1.zeroPadValue)(epochId, 32)), sigma);
+            // FIXME: is this the right way to obtain sigma?
+            window.crypto.getRandomValues(sigma);
+            const epochId = (0, ethers_1.toBeHex)(blockNumber);
+            console.log("eon key bytes", (0, ethers_1.getBytes)(eonKey));
+            var encryptedMessage;
+            try {
+                encryptedMessage = yield (0, shutter_crypto_1.encrypt)((0, ethers_1.getBytes)((0, ethers_1.encodeRlp)(dataForShutterTX)), (0, ethers_1.getBytes)(eonKey), (0, ethers_1.getBytes)((0, ethers_1.zeroPadValue)(epochId, 32)), sigma);
+            }
+            catch (error) {
+                console.log(error);
+            }
+            console.log("sigma", sigma);
+            console.log("epochId", epochId);
             return [encryptedMessage, tx.gasLimit];
         });
     }

@@ -5,7 +5,11 @@ import {
   getBytes,
   encodeRlp,
   RlpStructuredDataish,
-  toBeHex, zeroPadValue, resolveAddress, assertArgument, BigNumberish
+  toBeHex, 
+  zeroPadValue,
+  resolveAddress,
+  assertArgument,
+  BigNumberish
 } from 'ethers'
 import { abi as InboxAbi } from './abis/Inbox.sol/Inbox.json'
 import { abi as KeyperSetManager } from './abis/KeyperSetManager.sol/KeyperSetManager.json'
@@ -84,6 +88,10 @@ export class SignerShutter extends JsonRpcSigner {
     return result
   }
 
+  hexKeyToArray(hexvalue: string): Uint8Array {
+      return Uint8Array.from(Buffer.from(hexvalue, "hex"));
+  }
+
   async encryptOriginalTx(_tx: TransactionRequest): Promise<[Uint8Array, BigNumberish]> {
     const tx = deepCopy(_tx)
 
@@ -125,22 +133,33 @@ export class SignerShutter extends JsonRpcSigner {
     }
 
 
-    const blockNumber = await this.provider.getBlockNumber()
+    const blockNumber = await this.provider.getBlockNumber() + 2
 
-    const eonKey = await this.getEonKeyForBlock(blockNumber + 2)
-    console.log(blockNumber + 2)
+    const eonKey = await this.getEonKeyForBlock(blockNumber)
+    console.log("block/epoch", blockNumber)
+    console.log("eonkey", eonKey)
 
     await init(this.wasmUrl)
 
     const dataForShutterTX = [tx.to, toBeHex(BigInt(tx.value as string))]
     const sigma = new Uint8Array(32)
-    const epochId = toBeHex(blockNumber + 2)
-    const encryptedMessage = await encrypt(
-      getBytes(encodeRlp(dataForShutterTX as RlpStructuredDataish)),
-      getBytes(eonKey),
-      getBytes(zeroPadValue(epochId, 32)),
-      sigma
-    )
+    // FIXME: is this the right way to obtain sigma?
+    window.crypto.getRandomValues(sigma)
+    const epochId = toBeHex(blockNumber)
+    console.log("eon key bytes", getBytes(eonKey))
+      var encryptedMessage
+      try {
+          encryptedMessage = await encrypt(
+              getBytes(encodeRlp(dataForShutterTX as RlpStructuredDataish)),
+              getBytes(eonKey),
+              getBytes(zeroPadValue(epochId, 32)),
+              sigma
+          )
+      } catch (error) {
+          console.log(error)
+      }
+    console.log("sigma", sigma)
+    console.log("epochId", epochId)
 
     return [encryptedMessage, tx.gasLimit!]
   }
