@@ -82,7 +82,7 @@ class SignerShutter extends ethers_1.JsonRpcSigner {
     hexKeyToArray(hexvalue) {
         return Uint8Array.from(Buffer.from(hexvalue, "hex"));
     }
-    encryptOriginalTx(_tx) {
+    encryptOriginalTx(_tx, inclusionBlock) {
         return __awaiter(this, void 0, void 0, function* () {
             const tx = deepCopy(_tx);
             const promises = [];
@@ -117,34 +117,39 @@ class SignerShutter extends ethers_1.JsonRpcSigner {
             if (promises.length) {
                 yield Promise.all(promises);
             }
-            const blockNumber = (yield this.provider.getBlockNumber()) + 2;
-            const eonKey = yield this.getEonKeyForBlock(blockNumber);
-            console.log("block/epoch", blockNumber);
-            console.log("eonkey", eonKey);
+            const eonKey = yield this.getEonKeyForBlock(inclusionBlock);
+            console.log("inclusion block/epoch", inclusionBlock);
             yield (0, shutter_crypto_1.init)(this.wasmUrl);
-            const dataForShutterTX = [tx.to, (0, ethers_1.toBeHex)(BigInt(tx.value))];
+            if (!tx.data) {
+                tx.data = "0x";
+            }
+            const dataForShutterTX = [tx.to, tx.data, (0, ethers_1.toBeHex)(BigInt(tx.value))];
             const sigma = new Uint8Array(32);
             // FIXME: is this the right way to obtain sigma?
             window.crypto.getRandomValues(sigma);
-            const epochId = (0, ethers_1.toBeHex)(blockNumber);
-            console.log("eon key bytes", (0, ethers_1.getBytes)(eonKey));
+            const epochId = (0, ethers_1.toBeHex)(inclusionBlock);
+            const dataBytes = (0, ethers_1.getBytes)((0, ethers_1.encodeRlp)(dataForShutterTX));
+            const versionedData = new Uint8Array(dataBytes.length + 1);
+            // version byte needs to be 0
+            versionedData.set(dataBytes, 1);
             var encryptedMessage;
             try {
-                encryptedMessage = yield (0, shutter_crypto_1.encrypt)((0, ethers_1.getBytes)((0, ethers_1.encodeRlp)(dataForShutterTX)), (0, ethers_1.getBytes)(eonKey), (0, ethers_1.getBytes)((0, ethers_1.zeroPadValue)(epochId, 32)), sigma);
+                encryptedMessage = yield (0, shutter_crypto_1.encrypt)(versionedData, (0, ethers_1.getBytes)(eonKey), (0, ethers_1.getBytes)(epochId), sigma);
             }
             catch (error) {
                 console.log(error);
             }
-            console.log("sigma", sigma);
-            console.log("epochId", epochId);
             return [encryptedMessage, tx.gasLimit];
         });
     }
-    sendTransaction(tx) {
+    _sendTransactionTrace(tx, inclusionWindow) {
         const _super = Object.create(null, {
             sendTransaction: { get: () => super.sendTransaction }
         });
         return __awaiter(this, void 0, void 0, function* () {
+            if (!inclusionWindow) {
+                inclusionWindow = 25;
+            }
             const isPaused = yield this.isShutterPaused();
             if (isPaused) {
                 throw new Error('shutter is paused');
@@ -153,15 +158,24 @@ class SignerShutter extends ethers_1.JsonRpcSigner {
             if (latestBlock == null) {
                 throw new Error('latest block not found');
             }
+            const inclusionBlock = latestBlock.number + inclusionWindow;
             const inbox = new ethers_1.Contract(this.inboxAddress, Inbox_json_1.abi, this);
-            const [executionTx, gasLimitExecuteTx] = yield this.encryptOriginalTx(tx);
-            const includeTx = yield inbox.submitEncryptedTransaction.populateTransaction(latestBlock.number + 2, executionTx, gasLimitExecuteTx, tx.to);
+            const [executionTx, gasLimitExecuteTx] = yield this.encryptOriginalTx(tx, inclusionBlock);
+            const includeTx = yield inbox.submitEncryptedTransaction.populateTransaction(inclusionBlock, executionTx, gasLimitExecuteTx, tx.to);
             // gasLimitExecuteTx should be some % higher, because the execution of the tx will
             // happen several blocks later, and the gasLimit is estimated for the current
             // block.
             const txFeesForExecutionTx = latestBlock.baseFeePerGas * ((BigInt(gasLimitExecuteTx) * BigInt(120)) / BigInt(100));
             includeTx.value = txFeesForExecutionTx;
-            return _super.sendTransaction.call(this, includeTx);
+            console.log(includeTx);
+            return new Promise((resolve, reject) => {
+                resolve([executionTx, _super.sendTransaction.call(this, includeTx)]);
+            });
+        });
+    }
+    sendTransaction(tx) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return (yield this._sendTransactionTrace(tx, 25))[1];
         });
     }
 }

@@ -6,7 +6,6 @@ import {
   encodeRlp,
   RlpStructuredDataish,
   toBeHex, 
-  zeroPadValue,
   resolveAddress,
   assertArgument,
   BigNumberish
@@ -92,7 +91,7 @@ export class SignerShutter extends JsonRpcSigner {
       return Uint8Array.from(Buffer.from(hexvalue, "hex"));
   }
 
-  async encryptOriginalTx(_tx: TransactionRequest): Promise<[Uint8Array, BigNumberish]> {
+  async encryptOriginalTx(_tx: TransactionRequest, inclusionBlock: number): Promise<[Uint8Array, BigNumberish]> {
     const tx = deepCopy(_tx)
 
     const promises: Array<Promise<void>> = []
@@ -132,39 +131,41 @@ export class SignerShutter extends JsonRpcSigner {
       await Promise.all(promises)
     }
 
-
-    const blockNumber = await this.provider.getBlockNumber() + 2
-
-    const eonKey = await this.getEonKeyForBlock(blockNumber)
-    console.log("block/epoch", blockNumber)
-    console.log("eonkey", eonKey)
+    const eonKey = await this.getEonKeyForBlock(inclusionBlock)
+    console.log("inclusion block/epoch", inclusionBlock)
 
     await init(this.wasmUrl)
-
-    const dataForShutterTX = [tx.to, toBeHex(BigInt(tx.value as string))]
+    if (!tx.data) {
+        tx.data = "0x"
+    }
+    const dataForShutterTX = [tx.to, tx.data, toBeHex(BigInt(tx.value as string))]
     const sigma = new Uint8Array(32)
     // FIXME: is this the right way to obtain sigma?
     window.crypto.getRandomValues(sigma)
-    const epochId = toBeHex(blockNumber)
-    console.log("eon key bytes", getBytes(eonKey))
+    const epochId = toBeHex(inclusionBlock)
+    const dataBytes = getBytes(encodeRlp(dataForShutterTX as RlpStructuredDataish))
+    const versionedData = new Uint8Array(dataBytes.length + 1)
+    // version byte needs to be 0
+    versionedData.set(dataBytes, 1)
       var encryptedMessage
       try {
           encryptedMessage = await encrypt(
-              getBytes(encodeRlp(dataForShutterTX as RlpStructuredDataish)),
+              versionedData,
               getBytes(eonKey),
-              getBytes(zeroPadValue(epochId, 32)),
+              getBytes(epochId),
               sigma
           )
       } catch (error) {
           console.log(error)
       }
-    console.log("sigma", sigma)
-    console.log("epochId", epochId)
 
     return [encryptedMessage, tx.gasLimit!]
   }
 
-  async sendTransaction(tx: TransactionRequest): Promise<any> {
+  async _sendTransactionTrace(tx: TransactionRequest, inclusionWindow: number): Promise<any> {
+      if (!inclusionWindow) {
+          inclusionWindow = 25
+      }
     const isPaused = await this.isShutterPaused()
 
     if (isPaused) {
@@ -176,10 +177,11 @@ export class SignerShutter extends JsonRpcSigner {
     if (latestBlock == null) {
       throw new Error('latest block not found')
     }
+    const inclusionBlock = latestBlock.number + inclusionWindow;
 
     const inbox = new Contract(this.inboxAddress, InboxAbi, this)
-    const [executionTx, gasLimitExecuteTx] = await this.encryptOriginalTx(tx)
-    const includeTx = await inbox.submitEncryptedTransaction.populateTransaction(latestBlock.number + 2, executionTx, gasLimitExecuteTx, tx.to)
+    const [executionTx, gasLimitExecuteTx] = await this.encryptOriginalTx(tx, inclusionBlock)
+    const includeTx = await inbox.submitEncryptedTransaction.populateTransaction(inclusionBlock, executionTx, gasLimitExecuteTx, tx.to)
 
     // gasLimitExecuteTx should be some % higher, because the execution of the tx will
     // happen several blocks later, and the gasLimit is estimated for the current
@@ -187,6 +189,13 @@ export class SignerShutter extends JsonRpcSigner {
     const txFeesForExecutionTx = latestBlock.baseFeePerGas! * ((BigInt(gasLimitExecuteTx) * BigInt(120)) / BigInt(100))
 
     includeTx.value = txFeesForExecutionTx
-    return super.sendTransaction(includeTx)
+    console.log(includeTx)
+    return new Promise<[Uint8Array, Promise<any>]>((resolve, reject) => {
+        resolve([executionTx, super.sendTransaction(includeTx)])
+    })
+  }
+
+  async sendTransaction(tx: TransactionRequest): Promise<any> {
+      return (await this._sendTransactionTrace(tx, 25))[1]
   }
 }
