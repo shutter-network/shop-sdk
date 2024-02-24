@@ -38,7 +38,7 @@
   },
   "dependencies": {
     "@ethersproject/properties": "^5.7.0",
-    "@shutter-network/shutter-crypto": "file:../rolling-shutter/js/shutter-crypto/shutter-network-shutter-crypto-2.0.0.tgz",
+    "@shutter-network/shutter-crypto": "^2.0.0",
     "ethers": "^6.8.1",
     "hardhat": "^2.19.0"
   }
