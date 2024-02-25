@@ -82,6 +82,9 @@ class SignerShutter extends ethers_1.JsonRpcSigner {
     hexKeyToArray(hexvalue) {
         return Uint8Array.from(Buffer.from(hexvalue, "hex"));
     }
+    decodeExecutionReceipt(receipt) {
+        return (0, ethers_1.decodeRlp)(receipt);
+    }
     encryptOriginalTx(_tx, inclusionBlock) {
         return __awaiter(this, void 0, void 0, function* () {
             const tx = deepCopy(_tx);
@@ -158,10 +161,10 @@ class SignerShutter extends ethers_1.JsonRpcSigner {
             if (latestBlock == null) {
                 throw new Error('latest block not found');
             }
-            const inclusionBlock = latestBlock.number + inclusionWindow;
+            const executionBlock = latestBlock.number + inclusionWindow;
             const inbox = new ethers_1.Contract(this.inboxAddress, Inbox_json_1.abi, this);
-            const [executionTx, gasLimitExecuteTx] = yield this.encryptOriginalTx(tx, inclusionBlock);
-            const includeTx = yield inbox.submitEncryptedTransaction.populateTransaction(inclusionBlock, executionTx, gasLimitExecuteTx, tx.to);
+            const [executionTx, gasLimitExecuteTx] = yield this.encryptOriginalTx(tx, executionBlock);
+            const includeTx = yield inbox.submitEncryptedTransaction.populateTransaction(executionBlock, executionTx, gasLimitExecuteTx, tx.to);
             // gasLimitExecuteTx should be some % higher, because the execution of the tx will
             // happen several blocks later, and the gasLimit is estimated for the current
             // block.
@@ -169,7 +172,7 @@ class SignerShutter extends ethers_1.JsonRpcSigner {
             includeTx.value = txFeesForExecutionTx;
             console.log(includeTx);
             return new Promise((resolve, reject) => {
-                resolve([executionTx, _super.sendTransaction.call(this, includeTx)]);
+                resolve([executionTx, _super.sendTransaction.call(this, includeTx), executionBlock]);
             });
         });
     }

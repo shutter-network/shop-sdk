@@ -4,6 +4,7 @@ import {
   TransactionRequest,
   getBytes,
   encodeRlp,
+  decodeRlp,
   RlpStructuredDataish,
   toBeHex, 
   resolveAddress,
@@ -89,6 +90,10 @@ export class SignerShutter extends JsonRpcSigner {
 
   hexKeyToArray(hexvalue: string): Uint8Array {
       return Uint8Array.from(Buffer.from(hexvalue, "hex"));
+  }
+
+  decodeExecutionReceipt(receipt: string): any {
+      return decodeRlp(receipt)
   }
 
   async encryptOriginalTx(_tx: TransactionRequest, inclusionBlock: number): Promise<[Uint8Array, BigNumberish]> {
@@ -177,11 +182,11 @@ export class SignerShutter extends JsonRpcSigner {
     if (latestBlock == null) {
       throw new Error('latest block not found')
     }
-    const inclusionBlock = latestBlock.number + inclusionWindow;
+    const executionBlock = latestBlock.number + inclusionWindow;
 
     const inbox = new Contract(this.inboxAddress, InboxAbi, this)
-    const [executionTx, gasLimitExecuteTx] = await this.encryptOriginalTx(tx, inclusionBlock)
-    const includeTx = await inbox.submitEncryptedTransaction.populateTransaction(inclusionBlock, executionTx, gasLimitExecuteTx, tx.to)
+    const [executionTx, gasLimitExecuteTx] = await this.encryptOriginalTx(tx, executionBlock)
+    const includeTx = await inbox.submitEncryptedTransaction.populateTransaction(executionBlock, executionTx, gasLimitExecuteTx, tx.to)
 
     // gasLimitExecuteTx should be some % higher, because the execution of the tx will
     // happen several blocks later, and the gasLimit is estimated for the current
@@ -190,8 +195,8 @@ export class SignerShutter extends JsonRpcSigner {
 
     includeTx.value = txFeesForExecutionTx
     console.log(includeTx)
-    return new Promise<[Uint8Array, Promise<any>]>((resolve, reject) => {
-        resolve([executionTx, super.sendTransaction(includeTx)])
+    return new Promise<[Uint8Array, Promise<any>, number]>((resolve, reject) => {
+        resolve([executionTx, super.sendTransaction(includeTx), executionBlock])
     })
   }
 
