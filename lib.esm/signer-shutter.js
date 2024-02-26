@@ -164,7 +164,7 @@ class SignerShutter extends ethers_1.JsonRpcSigner {
             const executionBlock = latestBlock.number + inclusionWindow;
             const inbox = new ethers_1.Contract(this.inboxAddress, Inbox_json_1.abi, this);
             const [executionTx, gasLimitExecuteTx] = yield this.encryptOriginalTx(tx, executionBlock);
-            const includeTx = yield inbox.submitEncryptedTransaction.populateTransaction(executionBlock, executionTx, gasLimitExecuteTx, tx.to);
+            const includeTx = yield inbox.submitEncryptedTransaction.populateTransaction(executionBlock, executionTx, gasLimitExecuteTx, tx.from);
             // gasLimitExecuteTx should be some % higher, because the execution of the tx will
             // happen several blocks later, and the gasLimit is estimated for the current
             // block.

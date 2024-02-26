@@ -186,7 +186,7 @@ export class SignerShutter extends JsonRpcSigner {
 
     const inbox = new Contract(this.inboxAddress, InboxAbi, this)
     const [executionTx, gasLimitExecuteTx] = await this.encryptOriginalTx(tx, executionBlock)
-    const includeTx = await inbox.submitEncryptedTransaction.populateTransaction(executionBlock, executionTx, gasLimitExecuteTx, tx.to)
+    const includeTx = await inbox.submitEncryptedTransaction.populateTransaction(executionBlock, executionTx, gasLimitExecuteTx, tx.from)
 
     // gasLimitExecuteTx should be some % higher, because the execution of the tx will
     // happen several blocks later, and the gasLimit is estimated for the current
