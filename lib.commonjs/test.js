@@ -1,4 +1,4 @@
-"use strict";
+'use strict'
 // import { ethers } from 'ethers'
 // import { ShutterProvider } from "./index.js";
 // TODO: figure out how to automatically generate these

@@ -1028,51 +1028,21 @@
         "absolutePath": "src/KeyperSetManager.sol",
         "id": 46081,
         "exportedSymbols": {
-            "AccessControl": [
-                43683
-            ],
-            "AlreadyDeactivated": [
-                45921
-            ],
-            "AlreadyFinalized": [
-                45745
-            ],
-            "AlreadyHaveKeyperSet": [
-                45917
-            ],
-            "Context": [
-                43936
-            ],
-            "ERC165": [
-                44077
-            ],
-            "IAccessControl": [
-                43766
-            ],
-            "KeyperSet": [
-                45908
-            ],
-            "KeyperSetManager": [
-                46080
-            ],
-            "KeyperSetNotFinalized": [
-                45915
-            ],
-            "Math": [
-                45143
-            ],
-            "NoActiveKeyperSet": [
-                45919
-            ],
-            "Ownable": [
-                43914
-            ],
-            "Pausable": [
-                44053
-            ],
-            "RestrictedPausable": [
-                46124
-            ]
+            "AccessControl": [43683],
+            "AlreadyDeactivated": [45921],
+            "AlreadyFinalized": [45745],
+            "AlreadyHaveKeyperSet": [45917],
+            "Context": [43936],
+            "ERC165": [44077],
+            "IAccessControl": [43766],
+            "KeyperSet": [45908],
+            "KeyperSetManager": [46080],
+            "KeyperSetNotFinalized": [45915],
+            "Math": [45143],
+            "NoActiveKeyperSet": [45919],
+            "Ownable": [43914],
+            "Pausable": [44053],
+            "RestrictedPausable": [46124]
         },
         "nodeType": "SourceUnit",
         "src": "32:1955:31",
@@ -1082,12 +1052,7 @@
                 "nodeType": "PragmaDirective",
                 "src": "32:24:31",
                 "nodes": [],
-                "literals": [
-                    "solidity",
-                    "^",
-                    "0.8",
-                    ".21"
-                ]
+                "literals": ["solidity", "^", "0.8", ".21"]
             },
             {
                 "id": 45911,
@@ -1284,9 +1249,7 @@
                                 "pathNode": {
                                     "id": 45929,
                                     "name": "KeyperSetData",
-                                    "nameLocations": [
-                                        "443:13:31"
-                                    ],
+                                    "nameLocations": ["443:13:31"],
                                     "nodeType": "IdentifierPath",
                                     "referencedDeclaration": 45928,
                                     "src": "443:13:31"
@@ -2135,9 +2098,7 @@
                                 "modifierName": {
                                     "id": 45944,
                                     "name": "onlyRole",
-                                    "nameLocations": [
-                                        "666:8:31"
-                                    ],
+                                    "nameLocations": ["666:8:31"],
                                     "nodeType": "IdentifierPath",
                                     "referencedDeclaration": 43428,
                                     "src": "666:8:31"
@@ -2656,9 +2617,7 @@
                                     },
                                     "id": 46048,
                                     "initializationExpression": {
-                                        "assignments": [
-                                            46020
-                                        ],
+                                        "assignments": [46020],
                                         "declarations": [
                                             {
                                                 "constant": false,
@@ -3182,9 +3141,7 @@
                         "baseName": {
                             "id": 45922,
                             "name": "RestrictedPausable",
-                            "nameLocations": [
-                                "319:18:31"
-                            ],
+                            "nameLocations": ["319:18:31"],
                             "nodeType": "IdentifierPath",
                             "referencedDeclaration": 46124,
                             "src": "319:18:31"
@@ -3199,35 +3156,13 @@
                 "contractKind": "contract",
                 "fullyImplemented": true,
                 "linearizedBaseContracts": [
-                    46080,
-                    46124,
-                    44053,
-                    43683,
-                    44077,
-                    44089,
-                    43766,
-                    43936
+                    46080, 46124, 44053, 43683, 44077, 44089, 43766, 43936
                 ],
                 "name": "KeyperSetManager",
                 "nameLocation": "299:16:31",
                 "scope": 46081,
-                "usedErrors": [
-                    43693,
-                    43696,
-                    43958,
-                    43961,
-                    45915,
-                    45917,
-                    45919
-                ],
-                "usedEvents": [
-                    43705,
-                    43714,
-                    43723,
-                    43950,
-                    43955,
-                    45938
-                ]
+                "usedErrors": [43693, 43696, 43958, 43961, 45915, 45917, 45919],
+                "usedEvents": [43705, 43714, 43723, 43950, 43955, 45938]
             }
         ],
         "license": "MIT"

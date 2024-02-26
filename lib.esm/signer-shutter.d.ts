@@ -15,7 +15,7 @@ export declare class SignerShutter extends JsonRpcSigner {
     hexKeyToArray(hexvalue: string): Uint8Array;
     decodeExecutionReceipt(receipt: string): any;
     encryptOriginalTx(_tx: TransactionRequest, inclusionBlock: number): Promise<[Uint8Array, BigNumberish]>;
-    _sendTransactionTrace(tx: TransactionRequest, inclusionWindow: number): Promise<any>;
+    _sendTransactionTrace(tx: TransactionRequest, inclusionWindow?: number, blockProvider?: any): Promise<any>;
     sendTransaction(tx: TransactionRequest): Promise<any>;
 }
 //# sourceMappingURL=signer-shutter.d.ts.map

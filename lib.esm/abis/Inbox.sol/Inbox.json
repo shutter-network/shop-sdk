@@ -1233,39 +1233,17 @@
         "absolutePath": "src/Inbox.sol",
         "id": 45398,
         "exportedSymbols": {
-            "AccessControl": [
-                43644
-            ],
-            "BlockAlreadyFinalized": [
-                45111
-            ],
-            "BlockGasLimitExceeded": [
-                45115
-            ],
-            "Context": [
-                43897
-            ],
-            "ERC165": [
-                44038
-            ],
-            "IAccessControl": [
-                43727
-            ],
-            "Inbox": [
-                45397
-            ],
-            "InsufficientFunds": [
-                45109
-            ],
-            "Pausable": [
-                44014
-            ],
-            "RestrictedPausable": [
-                45884
-            ],
-            "TransferEtherFailed": [
-                45113
-            ]
+            "AccessControl": [43644],
+            "BlockAlreadyFinalized": [45111],
+            "BlockGasLimitExceeded": [45115],
+            "Context": [43897],
+            "ERC165": [44038],
+            "IAccessControl": [43727],
+            "Inbox": [45397],
+            "InsufficientFunds": [45109],
+            "Pausable": [44014],
+            "RestrictedPausable": [45884],
+            "TransferEtherFailed": [45113]
         },
         "nodeType": "SourceUnit",
         "src": "32:3393:26",
@@ -1275,12 +1253,7 @@
                 "nodeType": "PragmaDirective",
                 "src": "32:24:26",
                 "nodes": [],
-                "literals": [
-                    "solidity",
-                    "^",
-                    "0.8",
-                    ".21"
-                ]
+                "literals": ["solidity", "^", "0.8", ".21"]
             },
             {
                 "id": 45107,
@@ -1976,9 +1949,7 @@
                                     "pathNode": {
                                         "id": 45159,
                                         "name": "Transaction",
-                                        "nameLocations": [
-                                            "939:11:26"
-                                        ],
+                                        "nameLocations": ["939:11:26"],
                                         "nodeType": "IdentifierPath",
                                         "referencedDeclaration": 45124,
                                         "src": "939:11:26"
@@ -2215,9 +2186,7 @@
                                 "modifierName": {
                                     "id": 45179,
                                     "name": "onlyRole",
-                                    "nameLocations": [
-                                        "1177:8:26"
-                                    ],
+                                    "nameLocations": ["1177:8:26"],
                                     "nodeType": "IdentifierPath",
                                     "referencedDeclaration": 43389,
                                     "src": "1177:8:26"
@@ -2517,9 +2486,7 @@
                                     }
                                 },
                                 {
-                                    "assignments": [
-                                        45222
-                                    ],
+                                    "assignments": [45222],
                                     "declarations": [
                                         {
                                             "constant": false,
@@ -2716,9 +2683,7 @@
                                     }
                                 },
                                 {
-                                    "assignments": [
-                                        45241
-                                    ],
+                                    "assignments": [45241],
                                     "declarations": [
                                         {
                                             "constant": false,
@@ -2742,9 +2707,7 @@
                                                     "pathNode": {
                                                         "id": 45238,
                                                         "name": "Transaction",
-                                                        "nameLocations": [
-                                                            "1822:11:26"
-                                                        ],
+                                                        "nameLocations": ["1822:11:26"],
                                                         "nodeType": "IdentifierPath",
                                                         "referencedDeclaration": 45124,
                                                         "src": "1822:11:26"
@@ -2809,9 +2772,7 @@
                                     "src": "1822:70:26"
                                 },
                                 {
-                                    "assignments": [
-                                        45247
-                                    ],
+                                    "assignments": [45247],
                                     "declarations": [
                                         {
                                             "constant": false,
@@ -2918,9 +2879,7 @@
                                     "src": "1902:51:26"
                                 },
                                 {
-                                    "assignments": [
-                                        45255
-                                    ],
+                                    "assignments": [45255],
                                     "declarations": [
                                         {
                                             "constant": false,
@@ -3585,9 +3544,7 @@
                                     "src": "2408:205:26"
                                 },
                                 {
-                                    "assignments": [
-                                        45303
-                                    ],
+                                    "assignments": [45303],
                                     "declarations": [
                                         {
                                             "constant": false,
@@ -3818,9 +3775,7 @@
                                 "modifierName": {
                                     "id": 45206,
                                     "name": "whenNotPaused",
-                                    "nameLocations": [
-                                        "1563:13:26"
-                                    ],
+                                    "nameLocations": ["1563:13:26"],
                                     "nodeType": "IdentifierPath",
                                     "referencedDeclaration": 43939,
                                     "src": "1563:13:26"
@@ -4080,9 +4035,7 @@
                                             "pathNode": {
                                                 "id": 45324,
                                                 "name": "Transaction",
-                                                "nameLocations": [
-                                                    "2854:11:26"
-                                                ],
+                                                "nameLocations": ["2854:11:26"],
                                                 "nodeType": "IdentifierPath",
                                                 "referencedDeclaration": 45124,
                                                 "src": "2854:11:26"
@@ -4266,9 +4219,7 @@
                                 "modifierName": {
                                     "id": 45336,
                                     "name": "onlyRole",
-                                    "nameLocations": [
-                                        "2957:8:26"
-                                    ],
+                                    "nameLocations": ["2957:8:26"],
                                     "nodeType": "IdentifierPath",
                                     "referencedDeclaration": 43389,
                                     "src": "2957:8:26"
@@ -4517,9 +4468,7 @@
                                 "modifierName": {
                                     "id": 45354,
                                     "name": "onlyRole",
-                                    "nameLocations": [
-                                        "3092:8:26"
-                                    ],
+                                    "nameLocations": ["3092:8:26"],
                                     "nodeType": "IdentifierPath",
                                     "referencedDeclaration": 43389,
                                     "src": "3092:8:26"
@@ -4588,10 +4537,7 @@
                             "nodes": [],
                             "statements": [
                                 {
-                                    "assignments": [
-                                        45380,
-                                        null
-                                    ],
+                                    "assignments": [45380, null],
                                     "declarations": [
                                         {
                                             "constant": false,
@@ -4687,9 +4633,7 @@
                                             "isLValue": false,
                                             "isPure": false,
                                             "lValueRequested": false,
-                                            "names": [
-                                                "value"
-                                            ],
+                                            "names": ["value"],
                                             "nodeType": "FunctionCallOptions",
                                             "options": [
                                                 {
@@ -4892,9 +4836,7 @@
                         "baseName": {
                             "id": 45116,
                             "name": "RestrictedPausable",
-                            "nameLocations": [
-                                "231:18:26"
-                            ],
+                            "nameLocations": ["231:18:26"],
                             "nodeType": "IdentifierPath",
                             "referencedDeclaration": 45884,
                             "src": "231:18:26"
@@ -4909,37 +4851,13 @@
                 "contractKind": "contract",
                 "fullyImplemented": true,
                 "linearizedBaseContracts": [
-                    45397,
-                    45884,
-                    44014,
-                    43644,
-                    44038,
-                    44050,
-                    43727,
-                    43897
+                    45397, 45884, 44014, 43644, 44038, 44050, 43727, 43897
                 ],
                 "name": "Inbox",
                 "nameLocation": "222:5:26",
                 "scope": 45398,
-                "usedErrors": [
-                    43654,
-                    43657,
-                    43919,
-                    43922,
-                    45109,
-                    45111,
-                    45113,
-                    45115
-                ],
-                "usedEvents": [
-                    43666,
-                    43675,
-                    43684,
-                    43911,
-                    43916,
-                    45138,
-                    45142
-                ]
+                "usedErrors": [43654, 43657, 43919, 43922, 45109, 45111, 45113, 45115],
+                "usedEvents": [43666, 43675, 43684, 43911, 43916, 45138, 45142]
             }
         ],
         "license": "MIT"

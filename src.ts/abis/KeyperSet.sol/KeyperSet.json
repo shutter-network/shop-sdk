@@ -543,18 +543,10 @@
     "absolutePath": "src/KeyperSet.sol",
     "id": 45909,
     "exportedSymbols": {
-      "AlreadyFinalized": [
-        45745
-      ],
-      "Context": [
-        43936
-      ],
-      "KeyperSet": [
-        45908
-      ],
-      "Ownable": [
-        43914
-      ]
+      "AlreadyFinalized": [45745],
+      "Context": [43936],
+      "KeyperSet": [45908],
+      "Ownable": [43914]
     },
     "nodeType": "SourceUnit",
     "src": "32:1619:30",
@@ -564,12 +556,7 @@
         "nodeType": "PragmaDirective",
         "src": "32:24:30",
         "nodes": [],
-        "literals": [
-          "solidity",
-          "^",
-          "0.8",
-          ".21"
-        ]
+        "literals": ["solidity", "^", "0.8", ".21"]
       },
       {
         "id": 45743,
@@ -777,9 +764,7 @@
                 "modifierName": {
                   "id": 45758,
                   "name": "Ownable",
-                  "nameLocations": [
-                    "279:7:30"
-                  ],
+                  "nameLocations": ["279:7:30"],
                   "nodeType": "IdentifierPath",
                   "referencedDeclaration": 43914,
                   "src": "279:7:30"
@@ -1573,9 +1558,7 @@
                   },
                   "id": 45847,
                   "initializationExpression": {
-                    "assignments": [
-                      45828
-                    ],
+                    "assignments": [45828],
                     "declarations": [
                       {
                         "constant": false,
@@ -1673,9 +1656,7 @@
                 "modifierName": {
                   "id": 45818,
                   "name": "onlyOwner",
-                  "nameLocations": [
-                    "867:9:30"
-                  ],
+                  "nameLocations": ["867:9:30"],
                   "nodeType": "IdentifierPath",
                   "referencedDeclaration": 43825,
                   "src": "867:9:30"
@@ -1867,9 +1848,7 @@
                 "modifierName": {
                   "id": 45853,
                   "name": "onlyOwner",
-                  "nameLocations": [
-                    "1120:9:30"
-                  ],
+                  "nameLocations": ["1120:9:30"],
                   "nodeType": "IdentifierPath",
                   "referencedDeclaration": 43825,
                   "src": "1120:9:30"
@@ -2051,9 +2030,7 @@
                 "modifierName": {
                   "id": 45871,
                   "name": "onlyOwner",
-                  "nameLocations": [
-                    "1305:9:30"
-                  ],
+                  "nameLocations": ["1305:9:30"],
                   "nodeType": "IdentifierPath",
                   "referencedDeclaration": 43825,
                   "src": "1305:9:30"
@@ -2180,9 +2157,7 @@
                 "modifierName": {
                   "id": 45887,
                   "name": "onlyOwner",
-                  "nameLocations": [
-                    "1469:9:30"
-                  ],
+                  "nameLocations": ["1469:9:30"],
                   "nodeType": "IdentifierPath",
                   "referencedDeclaration": 43825,
                   "src": "1469:9:30"
@@ -2358,9 +2333,7 @@
             "baseName": {
               "id": 45746,
               "name": "Ownable",
-              "nameLocations": [
-                "160:7:30"
-              ],
+              "nameLocations": ["160:7:30"],
               "nodeType": "IdentifierPath",
               "referencedDeclaration": 43914,
               "src": "160:7:30"
@@ -2374,22 +2347,12 @@
         "contractDependencies": [],
         "contractKind": "contract",
         "fullyImplemented": true,
-        "linearizedBaseContracts": [
-          45908,
-          43914,
-          43936
-        ],
+        "linearizedBaseContracts": [45908, 43914, 43936],
         "name": "KeyperSet",
         "nameLocation": "147:9:30",
         "scope": 45909,
-        "usedErrors": [
-          43780,
-          43785,
-          45745
-        ],
-        "usedEvents": [
-          43791
-        ]
+        "usedErrors": [43780, 43785, 45745],
+        "usedEvents": [43791]
       }
     ],
     "license": "MIT"

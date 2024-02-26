@@ -19,7 +19,6 @@
 //   }
 // }
 
-
 // (async function() {
 
 //   await test(new ShutterProvider({

@@ -5,11 +5,7 @@
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true,
-    "lib": [
-      "es2015",
-      "es5",
-      "dom"
-    ],
+    "lib": ["es2015", "es5", "dom"],
     "module": "es6",
     "moduleResolution": "node16",
     "noEmitOnError": true,
@@ -24,10 +20,8 @@
     "sourceMap": true,
     "strict": true,
     "target": "es2016",
-    "resolveJsonModule": true,
+    "resolveJsonModule": true
   },
-  "include": [
-    "./src.ts/*.ts"
-  ],
-  "exclude": [ ]
+  "include": ["./src.ts/*.ts"],
+  "exclude": []
 }

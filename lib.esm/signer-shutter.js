@@ -16,25 +16,25 @@ const KeyperSetManager_json_1 = require("./abis/KeyperSetManager.sol/KeyperSetMa
 const KeyBroadcastContract_json_1 = require("./abis/KeyBroadcastContract.sol/KeyBroadcastContract.json");
 const shutter_crypto_1 = require("@shutter-network/shutter-crypto");
 const ethers_2 = require("ethers");
-const Primitive = "bigint,boolean,function,number,string,symbol".split(/,/g);
+const Primitive = 'bigint,boolean,function,number,string,symbol'.split(/,/g);
 function deepCopy(value) {
-    if (value == null || Primitive.indexOf(typeof (value)) >= 0) {
+    if (value == null || Primitive.indexOf(typeof value) >= 0) {
         return value;
     }
     // Keep any Addressable
-    if (typeof (value.getAddress) === "function") {
+    if (typeof value.getAddress === 'function') {
         return value;
     }
     if (Array.isArray(value)) {
-        return (value.map(deepCopy));
+        return value.map(deepCopy);
     }
-    if (typeof (value) === "object") {
+    if (typeof value === 'object') {
         return Object.keys(value).reduce((accum, key) => {
             accum[key] = value[key];
             return accum;
         }, {});
     }
-    throw new Error(`should not happen: ${value} (${typeof (value)})`);
+    throw new Error(`should not happen: ${value} (${typeof value})`);
 }
 class SignerShutter extends ethers_1.JsonRpcSigner {
     constructor(provider, address) {
@@ -80,7 +80,7 @@ class SignerShutter extends ethers_1.JsonRpcSigner {
         });
     }
     hexKeyToArray(hexvalue) {
-        return Uint8Array.from(Buffer.from(hexvalue, "hex"));
+        return Uint8Array.from(Buffer.from(hexvalue, 'hex'));
     }
     decodeExecutionReceipt(receipt) {
         return (0, ethers_1.decodeRlp)(receipt);
@@ -121,12 +121,16 @@ class SignerShutter extends ethers_1.JsonRpcSigner {
                 yield Promise.all(promises);
             }
             const eonKey = yield this.getEonKeyForBlock(inclusionBlock);
-            console.log("inclusion block/epoch", inclusionBlock);
+            console.log('inclusion block/epoch', inclusionBlock);
             yield (0, shutter_crypto_1.init)(this.wasmUrl);
             if (!tx.data) {
-                tx.data = "0x";
+                tx.data = '0x';
             }
-            const dataForShutterTX = [tx.to, tx.data, (0, ethers_1.toBeHex)(BigInt(tx.value))];
+            const dataForShutterTX = [
+                tx.to,
+                tx.data,
+                (0, ethers_1.toBeHex)(BigInt(tx.value)),
+            ];
             const sigma = new Uint8Array(32);
             // FIXME: is this the right way to obtain sigma?
             window.crypto.getRandomValues(sigma);
@@ -145,19 +149,20 @@ class SignerShutter extends ethers_1.JsonRpcSigner {
             return [encryptedMessage, tx.gasLimit];
         });
     }
-    _sendTransactionTrace(tx, inclusionWindow) {
+    _sendTransactionTrace(tx, inclusionWindow = 17, blockProvider) {
         const _super = Object.create(null, {
             sendTransaction: { get: () => super.sendTransaction }
         });
         return __awaiter(this, void 0, void 0, function* () {
-            if (!inclusionWindow) {
-                inclusionWindow = 25;
-            }
+            console.log(inclusionWindow);
             const isPaused = yield this.isShutterPaused();
             if (isPaused) {
                 throw new Error('shutter is paused');
             }
-            const latestBlock = yield this.provider.getBlock("latest");
+            if (!blockProvider) {
+                blockProvider = this.provider;
+            }
+            const latestBlock = yield blockProvider.getBlock('latest');
             if (latestBlock == null) {
                 throw new Error('latest block not found');
             }
@@ -168,7 +173,8 @@ class SignerShutter extends ethers_1.JsonRpcSigner {
             // gasLimitExecuteTx should be some % higher, because the execution of the tx will
             // happen several blocks later, and the gasLimit is estimated for the current
             // block.
-            const txFeesForExecutionTx = latestBlock.baseFeePerGas * ((BigInt(gasLimitExecuteTx) * BigInt(120)) / BigInt(100));
+            const txFeesForExecutionTx = latestBlock.baseFeePerGas *
+                ((BigInt(gasLimitExecuteTx) * BigInt(120)) / BigInt(100));
             includeTx.value = txFeesForExecutionTx;
             console.log(includeTx);
             return new Promise((resolve, reject) => {

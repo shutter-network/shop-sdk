@@ -25,18 +25,18 @@ class ShutterProvider extends ethers_1.BrowserProvider {
             if (address == null) {
                 address = 0;
             }
-            const accountsPromise = this.send("eth_accounts", []);
+            const accountsPromise = this.send('eth_accounts', []);
             // Account index
-            if (typeof (address) === "number") {
-                const accounts = (yield accountsPromise);
+            if (typeof address === 'number') {
+                const accounts = yield accountsPromise;
                 if (address >= accounts.length) {
-                    throw new Error("no such account");
+                    throw new Error('no such account');
                 }
                 return new signer_shutter_1.SignerShutter(this, accounts[address]);
             }
             const { accounts } = yield (0, ethers_1.resolveProperties)({
                 network: this.getNetwork(),
-                accounts: accountsPromise
+                accounts: accountsPromise,
             });
             // Account address
             address = (0, ethers_1.getAddress)(address);
@@ -45,7 +45,7 @@ class ShutterProvider extends ethers_1.BrowserProvider {
                     return new signer_shutter_1.SignerShutter(this, address);
                 }
             }
-            throw new Error("invalid account");
+            throw new Error('invalid account');
         });
     }
 }
