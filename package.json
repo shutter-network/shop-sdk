@@ -25,6 +25,7 @@
     "lint": "eslint --ext .js,.ts",
     "format": "prettier --ignore-path .gitignore --write \"**/*.+(js|ts|json)\"",
     "clean": "rm -rf lib.commonjs lib.esm && cp -r misc/basedirs/* .",
+    "publish": "npm publish --access=public",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
