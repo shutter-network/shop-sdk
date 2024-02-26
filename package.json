@@ -1,6 +1,6 @@
 {
   "name": "@shutter-network/shop-sdk",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "SDK for interacting with shutter on optimism",
   "author": "Shutter Network <contact@shutter.network>",
   "homepage": "https://github.com/shutter-network/shop-sdk#README.md",
