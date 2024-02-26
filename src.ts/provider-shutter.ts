@@ -1,14 +1,12 @@
 import {
   getAddress,
-  JsonRpcProvider,
+  BrowserProvider,
+  Eip1193Provider,
   resolveProperties,
-  JsonRpcApiProviderOptions,
   Networkish,
-  FetchRequest
 } from 'ethers'
 import { SignerShutter } from './signer-shutter'
 import { currentEnv, EnvSpecificArg } from './types'
-
 
 
 type ShutterOptions = {
@@ -17,15 +15,15 @@ type ShutterOptions = {
   inboxAddress: string,
   keyBroadcastAddress: string
 }
-export class ShutterProvider extends JsonRpcProvider {
+export class ShutterProvider extends BrowserProvider {
 
   wasmUrl: EnvSpecificArg<typeof currentEnv>;
   keyperSetManagerAddress: string;
   inboxAddress: string;
   keyBroadcastAddress: string;
 
-  constructor(shutterOptions: ShutterOptions, url?: string | FetchRequest, network?: Networkish, options?: JsonRpcApiProviderOptions) {
-    super(url, network, options)
+  constructor(shutterOptions: ShutterOptions, ethereum: Eip1193Provider, network?: Networkish) {
+    super(ethereum, network)
 
     this.wasmUrl = shutterOptions.wasmUrl;
     this.keyperSetManagerAddress = getAddress(shutterOptions.keyperSetManagerAddress);

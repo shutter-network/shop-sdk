@@ -1,21 +1,18 @@
-import { JsonRpcProvider, JsonRpcApiProviderOptions, Networkish, FetchRequest } from 'ethers';
+import { BrowserProvider, Eip1193Provider, Networkish } from 'ethers';
 import { SignerShutter } from './signer-shutter';
-type BrowserEnv = 'browser';
-type NodeEnv = 'node';
-declare const currentEnv: BrowserEnv | NodeEnv;
-type EnvSpecificArg<T> = T extends BrowserEnv ? string : never;
+import { currentEnv, EnvSpecificArg } from './types';
 type ShutterOptions = {
     wasmUrl: EnvSpecificArg<typeof currentEnv>;
     keyperSetManagerAddress: string;
     inboxAddress: string;
     keyBroadcastAddress: string;
 };
-export declare class ShutterProvider extends JsonRpcProvider {
+export declare class ShutterProvider extends BrowserProvider {
     wasmUrl: EnvSpecificArg<typeof currentEnv>;
     keyperSetManagerAddress: string;
     inboxAddress: string;
     keyBroadcastAddress: string;
-    constructor(shutterOptions: ShutterOptions, url?: string | FetchRequest, network?: Networkish, options?: JsonRpcApiProviderOptions);
+    constructor(shutterOptions: ShutterOptions, ethereum: Eip1193Provider, network?: Networkish);
     getSigner(address?: number | string): Promise<SignerShutter>;
 }
 export {};

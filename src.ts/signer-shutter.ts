@@ -4,8 +4,12 @@ import {
   TransactionRequest,
   getBytes,
   encodeRlp,
+  decodeRlp,
   RlpStructuredDataish,
-  toBeHex, zeroPadValue, resolveAddress, assertArgument, BigNumberish
+  toBeHex, 
+  resolveAddress,
+  assertArgument,
+  BigNumberish
 } from 'ethers'
 import { abi as InboxAbi } from './abis/Inbox.sol/Inbox.json'
 import { abi as KeyperSetManager } from './abis/KeyperSetManager.sol/KeyperSetManager.json'
@@ -39,7 +43,6 @@ function deepCopy<T = any>(value: T): T {
   throw new Error(`should not happen: ${ value } (${ typeof(value) })`);
 }
 
-
 export class SignerShutter extends JsonRpcSigner {
   wasmUrl: EnvSpecificArg<typeof currentEnv>;
   keyperSetManagerAddress: string;
@@ -64,14 +67,36 @@ export class SignerShutter extends JsonRpcSigner {
     return result
   }
 
-  async getEonKey(blockNumber: number): Promise<string> {
+  async getCurrentEonKey(): Promise<string> {
+      const blockNumber = await this.provider.getBlockNumber()
+      return this.getEonKeyForBlock(blockNumber)
+  }
+
+  async getEonKeyForBlock(block: number): Promise<string> {
+      const eon = await this.getEonForBlock(block);
+      return this.getEonKey(eon)
+  }
+
+  async getEonForBlock(block: number): Promise<number> {
+      const keyperSetManager = new Contract(this.keyperSetManagerAddress, KeyperSetManager, this.provider)
+      return keyperSetManager.getKeyperSetIndexByBlock(block);
+  }
+
+  async getEonKey(eon: number): Promise<string> {
     const keyBroadcastContract = new Contract(this.keyBroadcastAddress, KeyBroadcastContract, this.provider)
-    const result = await keyBroadcastContract.getEonKey(blockNumber)
+    const result = await keyBroadcastContract.getEonKey(eon)
     return result
   }
 
+  hexKeyToArray(hexvalue: string): Uint8Array {
+      return Uint8Array.from(Buffer.from(hexvalue, "hex"));
+  }
 
-  async encryptOriginalTx(_tx: TransactionRequest): Promise<[Uint8Array, BigNumberish]> {
+  decodeExecutionReceipt(receipt: string): any {
+      return decodeRlp(receipt)
+  }
+
+  async encryptOriginalTx(_tx: TransactionRequest, inclusionBlock: number): Promise<[Uint8Array, BigNumberish]> {
     const tx = deepCopy(_tx)
 
     const promises: Array<Promise<void>> = []
@@ -111,26 +136,41 @@ export class SignerShutter extends JsonRpcSigner {
       await Promise.all(promises)
     }
 
-    const eonKey = await this.getEonKey(0)
-
-    const blockNumber = await this.provider.getBlockNumber()
+    const eonKey = await this.getEonKeyForBlock(inclusionBlock)
+    console.log("inclusion block/epoch", inclusionBlock)
 
     await init(this.wasmUrl)
-
-    const dataForShutterTX = [tx.to, toBeHex(BigInt(tx.value as string))]
+    if (!tx.data) {
+        tx.data = "0x"
+    }
+    const dataForShutterTX = [tx.to, tx.data, toBeHex(BigInt(tx.value as string))]
     const sigma = new Uint8Array(32)
-    const epochId = toBeHex(blockNumber)
-    const encryptedMessage = await encrypt(
-      getBytes(encodeRlp(dataForShutterTX as RlpStructuredDataish)),
-      getBytes(eonKey),
-      getBytes(zeroPadValue(epochId, 32)),
-      sigma
-    )
+    // FIXME: is this the right way to obtain sigma?
+    window.crypto.getRandomValues(sigma)
+    const epochId = toBeHex(inclusionBlock)
+    const dataBytes = getBytes(encodeRlp(dataForShutterTX as RlpStructuredDataish))
+    const versionedData = new Uint8Array(dataBytes.length + 1)
+    // version byte needs to be 0
+    versionedData.set(dataBytes, 1)
+      var encryptedMessage
+      try {
+          encryptedMessage = await encrypt(
+              versionedData,
+              getBytes(eonKey),
+              getBytes(epochId),
+              sigma
+          )
+      } catch (error) {
+          console.log(error)
+      }
 
     return [encryptedMessage, tx.gasLimit!]
   }
 
-  async sendTransaction(tx: TransactionRequest): Promise<any> {
+  async _sendTransactionTrace(tx: TransactionRequest, inclusionWindow: number): Promise<any> {
+      if (!inclusionWindow) {
+          inclusionWindow = 25
+      }
     const isPaused = await this.isShutterPaused()
 
     if (isPaused) {
@@ -142,10 +182,11 @@ export class SignerShutter extends JsonRpcSigner {
     if (latestBlock == null) {
       throw new Error('latest block not found')
     }
+    const executionBlock = latestBlock.number + inclusionWindow;
 
     const inbox = new Contract(this.inboxAddress, InboxAbi, this)
-    const [executionTx, gasLimitExecuteTx] = await this.encryptOriginalTx(tx)
-    const includeTx = await inbox.submitEncryptedTransaction.populateTransaction(latestBlock.number + 2, executionTx, gasLimitExecuteTx, tx.to)
+    const [executionTx, gasLimitExecuteTx] = await this.encryptOriginalTx(tx, executionBlock)
+    const includeTx = await inbox.submitEncryptedTransaction.populateTransaction(executionBlock, executionTx, gasLimitExecuteTx, tx.from)
 
     // gasLimitExecuteTx should be some % higher, because the execution of the tx will
     // happen several blocks later, and the gasLimit is estimated for the current
@@ -153,6 +194,13 @@ export class SignerShutter extends JsonRpcSigner {
     const txFeesForExecutionTx = latestBlock.baseFeePerGas! * ((BigInt(gasLimitExecuteTx) * BigInt(120)) / BigInt(100))
 
     includeTx.value = txFeesForExecutionTx
-    return super.sendTransaction(includeTx)
+    console.log(includeTx)
+    return new Promise<[Uint8Array, Promise<any>, number]>((resolve, reject) => {
+        resolve([executionTx, super.sendTransaction(includeTx), executionBlock])
+    })
+  }
+
+  async sendTransaction(tx: TransactionRequest): Promise<any> {
+      return (await this._sendTransactionTrace(tx, 25))[1]
   }
 }

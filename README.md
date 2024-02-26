@@ -1,5 +1,5 @@
 # Shutter SDK
-Custom ethersjs Provider for Rolling shutter
+Custom ethersjs Provider for Rolling Shutter on Optimism.
 
 ## Build/Install
 
