@@ -1,7 +1,10 @@
 {
-  "name": "shutter-sdk",
-  "version": "1.0.0",
-  "description": "",
+  "name": "@shutter-network/shop-sdk",
+  "version": "0.1.0",
+  "description": "SDK for interacting with shutter on optimism",
+  "author": "Shutter Network <contact@shutter.network>",
+  "homepage": "https://github.com/shutter-network/shop-sdk#README.md",
+  "license": "ISC",
   "exports": {
     ".": {
       "import": "./lib.esm/index.js",
@@ -24,9 +27,6 @@
     "clean": "rm -rf lib.commonjs lib.esm && cp -r misc/basedirs/* .",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "devDependencies": {
     "@nomicfoundation/hardhat-toolbox": "^3.0.0",
     "@typescript-eslint/eslint-plugin": "^6.10.0",
