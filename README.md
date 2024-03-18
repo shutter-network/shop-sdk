@@ -6,3 +6,31 @@ Custom ethersjs Provider for Rolling Shutter on Optimism.
 ```
 npm run build
 ```
+
+## Current Deployment Addresses
+
+```
+{
+  "AddressManager": "0x970Bf4b5F6493292361c6cC763eE62960e7A2F3E",
+  "L1CrossDomainMessenger": "0x5537c3D815bc9cD37B1c5758D51EA6a109f599Fc",
+  "L1CrossDomainMessengerProxy": "0xb1044b939e73631F4AF646c9782B9D7d20a83A58",
+  "L1ERC721Bridge": "0x51300e790366e7Fe2C592EB1DF4Ea35F4aD6B8aD",
+  "L1ERC721BridgeProxy": "0x6955D9c433E8cA3c8eDEFC635774eDbE1b2c953D",
+  "L1StandardBridge": "0x5F298AD62b4caf8481E6d259902CD4446C814C59",
+  "L1StandardBridgeProxy": "0xC98Cdf523091100e4F83389EB93385071Ca349B9",
+  "L2OutputOracle": "0x89427E9D5EFD08CFA1db80450c78aB881a8Ee629",
+  "L2OutputOracleProxy": "0x62bd32753EB813617aAa44375ed870e38207a418",
+  "OptimismMintableERC20Factory": "0xe8e2603c73a31c6D1C8468d1623b7e3945eB81fD",
+  "OptimismMintableERC20FactoryProxy": "0x462F3cCBCafcDA1fAA6711813f4A60ed248Fe788",
+  "OptimismPortal": "0x387BdFFbcc4f5cE54e68025c2Ebfcaa5e6CB9976",
+  "OptimismPortalProxy": "0x75d931B9F7aEE5E1D0635E9d98020303F2B85110",
+  "ProtocolVersions": "0x9E0720bd0f5ac9176D15a3F5395128fDA3fc90E3",
+  "ProtocolVersionsProxy": "0xE62c33DA07A6209c819E8406Ba454Eba58aE6C79",
+  "ProxyAdmin": "0x9133006a6B5F5f01E5E51FCA8D55a1fd6795c6A4",
+  "SafeProxyFactory": "0xa6B71E26C5e0845f74c812102Ca7114b6a896AB2",
+  "SafeSingleton": "0xd9Db270c1B5E3Bd161E8c8503c55cEABeE709552",
+  "SystemConfig": "0x217c9a125cf36e0912Dc2C0A8f414da9E41e0A33",
+  "SystemConfigProxy": "0x78942913Dd67a4bE57e382A5C5DBA2a0ee821F7c",
+  "SystemOwnerSafe": "0xafB5230168994606BBaB66798B4361A051E4068F"
+}
+```
