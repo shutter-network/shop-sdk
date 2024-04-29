@@ -36,7 +36,7 @@ npm run build
 ### Architecture
 
 This section covers some behind-the-scenes on how Shutter-Optimism works. While it can be beneficial
-to understand the background, if you're eager to get started, you can jump down to `Usage` and
+to understand the background, if you're eager to get started, you can jump down to [Usage](#Usage) and
 come back here later.
 
 `shop-sdk` makes use of the Shutter WASM library, a WebAssembly of Shutter's cryptography
@@ -81,7 +81,7 @@ transactions at the top of the scheduled block.
 
 At block building time, the shutter keypers will produce an `eon secret key` for the next
 `epoch identifier`, which, in the case of Shutter-Optimism is based on the block number. The
-secret key is shared with the block builder. All enqueued transactions for this block will now be 
+secret key is shared with the block builder. All enqueued transactions for this block will now be
 decrypted and regularily executed, in the order specified in `Inbox`.
 
 A _shutterized_ block will contain a shutter specific [EVM log
@@ -287,17 +287,17 @@ executions.map(execution => {
 
 ```js
 const shopChain = {
-  chainId: "0x281b6fc",
-  chainName: "SHOP",
-  rpcUrls: ["https://rpc.op-sepolia.shutter.network"],
-  iconUrls: ["https://demo.op-sepolia.shutter.network/icon-192.png"],
+  chainId: '0x281b6fc',
+  chainName: 'SHOP',
+  rpcUrls: ['https://rpc.op-sepolia.shutter.network'],
+  iconUrls: ['https://demo.op-sepolia.shutter.network/icon-192.png'],
   nativeCurrency: {
-    name: "SHOPeth",
-    symbol: "SHOP",
+    name: 'SHOPeth',
+    symbol: 'SHOP',
     decimals: 18,
   },
   blockExplorerUrls: null,
-};
+}
 ```
 
 ### Current Deployment Addresses
