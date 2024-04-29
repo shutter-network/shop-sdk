@@ -23,7 +23,7 @@
     "build-clean": "npm run clean && npm run build-all",
     "build-commonjs": "tsc --build ./tsconfig.commonjs.json",
     "lint": "eslint --ext .js,.ts",
-    "format": "prettier --ignore-path .gitignore --write \"**/*.+(js|ts|json)\"",
+    "format": "prettier --ignore-path .gitignore --write \"**/*.+(js|ts|json|md)\"",
     "clean": "rm -rf lib.commonjs lib.esm && cp -r misc/basedirs/* .",
     "publish": "npm publish --access=public",
     "test": "echo \"Error: no test specified\" && exit 1"
