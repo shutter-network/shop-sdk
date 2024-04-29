@@ -27,7 +27,13 @@ application, that could run on Optimism, into a MEV protected version running on
 
 ## Getting Started
 
-### Build/Install
+### Install
+
+```
+npm install @shutter-network/shop-sdk
+```
+
+### Build from source
 
 ```
 npm run build
