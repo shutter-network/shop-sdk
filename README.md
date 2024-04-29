@@ -283,7 +283,24 @@ executions.map(execution => {
 
 ## Deployment Information
 
-Current Deployment Addresses
+### Chain Parameters for MetaMask
+
+```js
+const shopChain = {
+  chainId: "0x281b6fc",
+  chainName: "SHOP",
+  rpcUrls: ["https://rpc.op-sepolia.shutter.network"],
+  iconUrls: ["https://demo.op-sepolia.shutter.network/icon-192.png"],
+  nativeCurrency: {
+    name: "SHOPeth",
+    symbol: "SHOP",
+    decimals: 18,
+  },
+  blockExplorerUrls: null,
+};
+```
+
+### Current Deployment Addresses
 
 ```json
 {
