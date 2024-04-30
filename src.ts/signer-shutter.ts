@@ -6,6 +6,7 @@ import {
   encodeRlp,
   decodeRlp,
   RlpStructuredDataish,
+  toBeArray,
   toBeHex,
   resolveAddress,
   assertArgument,
@@ -181,8 +182,10 @@ export class SignerShutter extends JsonRpcSigner {
     const dataForShutterTX = [
       tx.to,
       tx.data,
-      toBeHex(BigInt(tx.value as string)),
+      toBeArray(BigInt(tx.value as string)),
     ]
+    console.log('tx.value', dataForShutterTX[-1])
+    console.log('rlp', encodeRlp(dataForShutterTX as RlpStructuredDataish))
     const sigma = new Uint8Array(32)
     // FIXME: is this the right way to obtain sigma?
     window.crypto.getRandomValues(sigma)

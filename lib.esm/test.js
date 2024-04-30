@@ -1,7 +1,7 @@
-"use strict";
+'use strict'
 // import { ethers } from 'ethers'
 // import { ShutterProvider } from "./index.js";
-Object.defineProperty(exports, "__esModule", { value: true });
+Object.defineProperty(exports, '__esModule', { value: true })
 // TODO: figure out how to automatically generate these
 // const wasmUrl = '';
 // const keyperSetManagerAddress= '0x922D6956C99E12DFeB3224DEA977D0939758A1Fe';
