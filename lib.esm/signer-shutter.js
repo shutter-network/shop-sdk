@@ -195,8 +195,10 @@ class SignerShutter extends ethers_1.JsonRpcSigner {
       const dataForShutterTX = [
         tx.to,
         tx.data,
-        (0, ethers_1.toBeHex)(BigInt(tx.value)),
+        (0, ethers_1.toBeArray)(BigInt(tx.value)),
       ]
+      console.log('tx.value', dataForShutterTX[-1])
+      console.log('rlp', (0, ethers_1.encodeRlp)(dataForShutterTX))
       const sigma = new Uint8Array(32)
       // FIXME: is this the right way to obtain sigma?
       window.crypto.getRandomValues(sigma)
