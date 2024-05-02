@@ -51,6 +51,13 @@ Here is a general overview, for the tx-flow on Shutter-Optimism:
 
 ![Transaction Flow](./doc/tx-flow.svg)
 
+In contrast to the original transaction flow ("without shutter"), users will send an encrypted
+version of their transaction as data to an inbox contract. The sequencer ("block builder") will
+pick up them to execute later. Encrypted transactions are scheduled to be executed in a specified
+block. This results in what we call _inclusion tx_ (a "normal" tx, writing encrypted data into the
+inbox and scheduling it for execution in block X), and the _execution transaction_ (happens in the
+scheduled block and will always be the first transactions in that block).
+
 #### Details
 
 `shop-sdk` makes use of the Shutter WASM library, a WebAssembly of Shutter's cryptography
