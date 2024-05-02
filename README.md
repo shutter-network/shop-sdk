@@ -100,7 +100,7 @@ decrypted and regularily executed, in the order specified in `Inbox`.
 
 A _shutterized_ block will contain a shutter specific [EVM log
 message](https://github.com/shutter-network/op-geth/blob/shutter/core/shutter.go), that will
-publish the _eopoch secret key_, as well as the decryption and execution status for the shutterized
+publish the _epoch secret key_, as well as the decryption and execution status for the shutterized
 transactions:
 
 ```go
