@@ -362,3 +362,4 @@ const shopChain = {
 - [shlib encryption](https://pkg.go.dev/github.com/shutter-network/shutter/shlib@v0.1.18/shcrypto#Encrypt)
 - [shlib decryption](https://pkg.go.dev/github.com/shutter-network/shutter/shlib@v0.1.18/shcrypto#EncryptedMessage.Decrypt)
 - [Shutter op-geth fork](https://github.com/shutter-network/op-geth)
+- [Shutter execution EVM log](https://github.com/shutter-network/op-geth/blob/shutter/core/shutter.go)
