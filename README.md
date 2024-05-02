@@ -45,6 +45,14 @@ This section covers some behind-the-scenes on how Shutter-Optimism works. While 
 to understand the background, if you're eager to get started, you can jump down to [Usage](#Usage) and
 come back here later.
 
+#### Overview
+
+Here is a general overview, for the tx-flow on Shutter-Optimism:
+
+![Transaction Flow](./doc/tx-flow.svg)
+
+#### Details
+
 `shop-sdk` makes use of the Shutter WASM library, a WebAssembly of Shutter's cryptography
 [library `shlib`](https://pkg.go.dev/github.com/shutter-network/shutter/shlib@v0.1.18/shcrypto).
 
