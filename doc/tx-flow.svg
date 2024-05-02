@@ -1,0 +1,560 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="297mm"
+   height="210mm"
+   viewBox="0 0 297 210"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.3 (0e150ed6c4, 2023-07-21)"
+   sodipodi:docname="tx-flow.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     inkscape:zoom="0.659725"
+     inkscape:cx="545.68191"
+     inkscape:cy="574.48179"
+     inkscape:window-width="1918"
+     inkscape:window-height="1030"
+     inkscape:window-x="0"
+     inkscape:window-y="24"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs1">
+    <marker
+       style="overflow:visible"
+       id="marker39"
+       refX="0"
+       refY="0"
+       orient="auto-start-reverse"
+       inkscape:stockid="Wide, heavy arrow"
+       markerWidth="1"
+       markerHeight="1"
+       viewBox="0 0 1 1"
+       inkscape:isstock="true"
+       inkscape:collect="always"
+       preserveAspectRatio="xMidYMid">
+      <path
+         style="fill:context-stroke;fill-rule:evenodd;stroke:none"
+         d="m 1,0 -3,3 h -2 l 3,-3 -3,-3 h 2 z"
+         id="path39" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="marker35"
+       refX="0"
+       refY="0"
+       orient="auto-start-reverse"
+       inkscape:stockid="Wide, heavy arrow"
+       markerWidth="1"
+       markerHeight="1"
+       viewBox="0 0 1 1"
+       inkscape:isstock="true"
+       inkscape:collect="always"
+       preserveAspectRatio="xMidYMid">
+      <path
+         style="fill:context-stroke;fill-rule:evenodd;stroke:none"
+         d="m 1,0 -3,3 h -2 l 3,-3 -3,-3 h 2 z"
+         id="path35" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="ArrowWideHeavy"
+       refX="0"
+       refY="0"
+       orient="auto-start-reverse"
+       inkscape:stockid="Wide, heavy arrow"
+       markerWidth="1"
+       markerHeight="1"
+       viewBox="0 0 1 1"
+       inkscape:isstock="true"
+       inkscape:collect="always"
+       preserveAspectRatio="xMidYMid">
+      <path
+         style="fill:context-stroke;fill-rule:evenodd;stroke:none"
+         d="m 1,0 -3,3 h -2 l 3,-3 -3,-3 h 2 z"
+         id="path3" />
+    </marker>
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <rect
+       style="fill:#fdffeb;fill-opacity:1;stroke:none;stroke-width:1.00717;stroke-linecap:square;stroke-linejoin:round"
+       id="rect1"
+       width="296.13608"
+       height="208.82559"
+       x="0.77097172"
+       y="0.60732883" />
+    <g
+       id="g5"
+       transform="matrix(0.76755222,0,0,0.76755222,71.582001,20.72034)">
+      <path
+         style="fill:#000000;fill-opacity:0;stroke:#000000;stroke-width:2.24;stroke-linecap:square;stroke-linejoin:round"
+         id="path2"
+         sodipodi:type="arc"
+         sodipodi:cx="141.82176"
+         sodipodi:cy="114.40699"
+         sodipodi:rx="24.665199"
+         sodipodi:ry="24.665199"
+         sodipodi:start="4.760759"
+         sodipodi:end="4.7587146"
+         sodipodi:open="true"
+         sodipodi:arc-type="arc"
+         d="m 143.01435,89.770639 a 24.665199,24.665199 0 0 1 23.44437,25.816351 24.665199,24.665199 0 0 1 -25.80437,23.45756 24.665199,24.665199 0 0 1 -23.47074,-25.79237 24.665199,24.665199 0 0 1 25.78037,-23.483927" />
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-weight:normal;font-size:5.64444px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+         x="141.62422"
+         y="112.98411"
+         id="text2"><tspan
+           sodipodi:role="line"
+           id="tspan2"
+           x="141.62422"
+           y="112.98411"
+           style="text-align:center;text-anchor:middle;stroke-width:0.264583">block</tspan><tspan
+           sodipodi:role="line"
+           x="141.62422"
+           y="120.03966"
+           style="text-align:center;text-anchor:middle;stroke-width:0.264583"
+           id="tspan4">builder</tspan></text>
+    </g>
+    <g
+       id="g10"
+       transform="matrix(0.76755222,0,0,0.76755222,64.425296,13.366451)">
+      <rect
+         style="fill:#000000;fill-opacity:0;stroke:#000000;stroke-width:2.24;stroke-linecap:square;stroke-linejoin:round"
+         id="rect6"
+         width="48.103737"
+         height="17.859379"
+         x="20.916868"
+         y="29.50436" />
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-weight:normal;font-size:5.64444px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+         x="30.208527"
+         y="37.022938"
+         id="text7"><tspan
+           sodipodi:role="line"
+           id="tspan7"
+           style="stroke-width:0.264583"
+           x="30.208527"
+           y="37.022938">inbox</tspan><tspan
+           sodipodi:role="line"
+           style="stroke-width:0.264583"
+           x="30.208527"
+           y="44.078487"
+           id="tspan73">transaction</tspan></text>
+    </g>
+    <g
+       id="g9"
+       transform="matrix(0.76755222,0,0,0.76755222,63.612,126.10994)">
+      <path
+         style="fill:#000000;fill-opacity:0;stroke:#000000;stroke-width:2.24;stroke-linecap:square;stroke-linejoin:round"
+         id="path7"
+         sodipodi:type="arc"
+         sodipodi:cx="155.90962"
+         sodipodi:cy="40.140495"
+         sodipodi:rx="51.656006"
+         sodipodi:ry="17.218668"
+         sodipodi:start="4.760759"
+         sodipodi:end="4.7587146"
+         sodipodi:open="true"
+         sodipodi:arc-type="arc"
+         d="M 158.40725,22.941966 A 51.656006,17.218668 0 0 1 207.50648,40.964248 51.656006,17.218668 0 0 1 153.46474,57.339866 51.656006,17.218668 0 0 1 104.31026,39.334324 51.656006,17.218668 0 0 1 158.30176,22.9403" />
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-weight:normal;font-size:5.64444px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+         x="125.59332"
+         y="41.608059"
+         id="text8"><tspan
+           sodipodi:role="line"
+           id="tspan8"
+           style="stroke-width:0.264583"
+           x="125.59332"
+           y="41.608059">public transaction pool</tspan></text>
+    </g>
+    <g
+       id="g8"
+       transform="matrix(0.76755222,0,0,0.76755222,96.470123,-86.917405)">
+      <path
+         style="fill:#000000;fill-opacity:0;stroke:#000000;stroke-width:2.24;stroke-linecap:square;stroke-linejoin:round"
+         id="path7-5"
+         sodipodi:type="arc"
+         sodipodi:cx="113.10065"
+         sodipodi:cy="167.56409"
+         sodipodi:rx="51.656006"
+         sodipodi:ry="17.218668"
+         sodipodi:start="4.760759"
+         sodipodi:end="4.7587146"
+         sodipodi:open="true"
+         sodipodi:arc-type="arc"
+         d="m 115.59827,150.36556 a 51.656006,17.218668 0 0 1 49.09924,18.02228 51.656006,17.218668 0 0 1 -54.04175,16.37562 51.656006,17.218668 0 0 1 -49.154471,-18.00554 51.656006,17.218668 0 0 1 53.991501,-16.39403" />
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-weight:normal;font-size:5.64444px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+         x="93.965981"
+         y="169.68076"
+         id="text8-3"><tspan
+           sodipodi:role="line"
+           id="tspan8-5"
+           style="stroke-width:0.264583"
+           x="93.965981"
+           y="169.68076">inbox contract</tspan></text>
+    </g>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:4.40902px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.206673"
+       x="16.307129"
+       y="107.77065"
+       id="text5"
+       transform="scale(1.0176837,0.98262357)"><tspan
+         sodipodi:role="line"
+         id="tspan5"
+         style="stroke-width:0.206673"
+         x="16.307129"
+         y="107.77065">with Shutter</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:4.40902px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.206673"
+       x="16.307129"
+       y="116.42364"
+       id="text6"
+       transform="scale(1.0176837,0.98262357)"><tspan
+         sodipodi:role="line"
+         id="tspan6"
+         style="stroke-width:0.206673"
+         x="16.307129"
+         y="116.42364">without Shutter</tspan></text>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.233993px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 13.978203,108.52464 H 291.70833"
+       id="path10" />
+    <g
+       id="g11"
+       transform="matrix(0.76755222,0,0,0.76755222,64.425296,126.85793)">
+      <rect
+         style="fill:#000000;fill-opacity:0;stroke:#000000;stroke-width:2.24;stroke-linecap:square;stroke-linejoin:round"
+         id="rect10"
+         width="48.103737"
+         height="17.859379"
+         x="20.916868"
+         y="29.50436" />
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-weight:normal;font-size:5.64444px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+         x="30.208527"
+         y="40.485806"
+         id="text10"><tspan
+           sodipodi:role="line"
+           id="tspan10"
+           style="stroke-width:0.264583"
+           x="30.208527"
+           y="40.485806">transaction</tspan></text>
+    </g>
+    <rect
+       style="fill:#000000;fill-opacity:0;stroke:#000000;stroke-width:1.71088;stroke-linecap:square;stroke-linejoin:round"
+       id="rect11"
+       width="42.174236"
+       height="38.935326"
+       x="246.63139"
+       y="89.82811" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:4.3324px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.203081"
+       x="79.620422"
+       y="55.684105"
+       id="text11"><tspan
+         sodipodi:role="line"
+         style="stroke-width:0.203081"
+         x="79.620422"
+         y="55.684105"
+         id="tspan12">* to: inbox contract</tspan><tspan
+         sodipodi:role="line"
+         style="stroke-width:0.203081"
+         x="79.620422"
+         y="61.099606"
+         id="tspan51">* from: address</tspan><tspan
+         sodipodi:role="line"
+         style="stroke-width:0.203081"
+         x="79.620422"
+         y="66.515106"
+         id="tspan52">* value: gas from original tx</tspan><tspan
+         sodipodi:role="line"
+         style="stroke-width:0.203081"
+         x="79.620422"
+         y="71.930603"
+         id="tspan53">* data: {</tspan><tspan
+         sodipodi:role="line"
+         style="stroke-width:0.203081"
+         x="79.620422"
+         y="77.346107"
+         id="tspan50">    * scheduled block number: X</tspan><tspan
+         sodipodi:role="line"
+         style="stroke-width:0.203081"
+         x="79.620422"
+         y="82.761604"
+         id="tspan13">    * <tspan
+   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:sans-serif;-inkscape-font-specification:sans-serif"
+   id="tspan76">encrypted original tx</tspan></tspan><tspan
+         sodipodi:role="line"
+         style="stroke-width:0.203081"
+         x="79.620422"
+         y="88.177101"
+         id="tspan55">    * excess gas recipient</tspan><tspan
+         sodipodi:role="line"
+         style="stroke-width:0.203081"
+         x="79.620422"
+         y="93.592606"
+         id="tspan54">}</tspan><tspan
+         sodipodi:role="line"
+         style="stroke-width:0.203081"
+         x="79.620422"
+         y="99.008102"
+         id="tspan14">* gas: for inbox tx</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:4.3324px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.203081"
+       x="79.620422"
+       y="169.08267"
+       id="text15"><tspan
+         sodipodi:role="line"
+         style="stroke-width:0.203081"
+         x="79.620422"
+         y="169.08267"
+         id="tspan16">* to: address</tspan><tspan
+         sodipodi:role="line"
+         style="stroke-width:0.203081"
+         x="79.620422"
+         y="174.49817"
+         id="tspan41">* from: address</tspan><tspan
+         sodipodi:role="line"
+         style="stroke-width:0.203081"
+         x="79.620422"
+         y="179.91367"
+         id="tspan42">* value: ...</tspan><tspan
+         sodipodi:role="line"
+         style="stroke-width:0.203081"
+         x="79.620422"
+         y="185.32918"
+         id="tspan43">* data: ...</tspan><tspan
+         sodipodi:role="line"
+         style="stroke-width:0.203081"
+         x="79.620422"
+         y="190.74467"
+         id="tspan44">* gas: ...</tspan></text>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.767552;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#ArrowWideHeavy)"
+       d="m 120.03658,40.478411 17.78658,-17.786587 8.89039,8.890385"
+       id="path19" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:4.3324px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.203081"
+       x="251.46881"
+       y="96.052086"
+       id="text20"><tspan
+         sodipodi:role="line"
+         id="tspan20"
+         style="stroke-width:0.203081"
+         x="251.46881"
+         y="96.052086">block</tspan><tspan
+         sodipodi:role="line"
+         style="stroke-width:0.203081"
+         x="251.46881"
+         y="101.46759"
+         id="tspan24">* number: X</tspan><tspan
+         sodipodi:role="line"
+         style="stroke-width:0.203081"
+         x="251.46881"
+         y="106.88309"
+         id="tspan33">* shutterized txs</tspan><tspan
+         sodipodi:role="line"
+         style="stroke-width:0.203081"
+         x="251.46881"
+         y="112.2986"
+         id="tspan34">* other txs</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:4.3324px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.203081"
+       x="195.43271"
+       y="61.517246"
+       id="text21"><tspan
+         sodipodi:role="line"
+         style="stroke-width:0.203081"
+         x="195.43271"
+         y="61.517246"
+         id="tspan22">* decrypt scheduled tx</tspan><tspan
+         sodipodi:role="line"
+         style="stroke-width:0.203081"
+         x="195.43271"
+         y="66.932747"
+         id="tspan23">* keep order from inbox</tspan><tspan
+         sodipodi:role="line"
+         style="stroke-width:0.203081"
+         x="195.43271"
+         y="72.348251"
+         id="tspan25">* put at the top of block</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:4.3324px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.203081"
+       x="195.43271"
+       y="130.59966"
+       id="text29"><tspan
+         sodipodi:role="line"
+         id="tspan26"
+         style="stroke-width:0.203081"
+         x="195.43271"
+         y="130.59966">* choose tx from pool</tspan><tspan
+         sodipodi:role="line"
+         style="stroke-width:0.203081"
+         x="195.43271"
+         y="136.01515"
+         id="tspan32">* free to choose order</tspan><tspan
+         sodipodi:role="line"
+         style="stroke-width:0.203081"
+         x="195.43271"
+         y="141.43065"
+         id="tspan36">* free to add tx for MEV</tspan></text>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.855038;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker35)"
+       d="m 189.04514,100.54573 61.31449,5.09764"
+       id="path34" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.855038;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker35)"
+       d="m 189.04514,116.26782 61.31449,-5.09764"
+       id="path36" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:3.52778px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.203081"
+       x="136.75179"
+       y="13.883364"
+       id="text37"><tspan
+         sodipodi:role="line"
+         id="tspan37"
+         style="font-size:3.52778px;stroke-width:0.203081"
+         x="136.75179"
+         y="13.883364">*) note: &quot;sending to inbox contract&quot; is a regular tx, </tspan><tspan
+         sodipodi:role="line"
+         style="font-size:3.52778px;stroke-width:0.203081"
+         x="136.75179"
+         y="18.293089"
+         id="tspan38">    that will need to go through the public transaction pool like below. </tspan><tspan
+         sodipodi:role="line"
+         style="font-size:3.52778px;stroke-width:0.203081"
+         x="136.75179"
+         y="22.702814"
+         id="tspan75">    It needs to end up in block number X-1 or earlier.</tspan></text>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.767552;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker39)"
+       d="M 188.13291,144.62614 V 119.34116"
+       id="path38" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.975207;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker39)"
+       d="M 188.13291,55.061211 V 95.878098"
+       id="path40" />
+    <g
+       id="g40"
+       transform="matrix(0.76755222,0,0,0.76755222,0.92529263,13.366451)">
+      <rect
+         style="fill:#000000;fill-opacity:0;stroke:#000000;stroke-width:2.24;stroke-linecap:square;stroke-linejoin:round"
+         id="rect40"
+         width="48.103737"
+         height="17.859379"
+         x="20.916868"
+         y="29.50436" />
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-weight:normal;font-size:5.64444px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+         x="30.208527"
+         y="37.022938"
+         id="text40"><tspan
+           sodipodi:role="line"
+           id="tspan40"
+           style="stroke-width:0.264583"
+           x="30.208527"
+           y="37.022938">original</tspan><tspan
+           sodipodi:role="line"
+           style="stroke-width:0.264583"
+           x="30.208527"
+           y="44.078487"
+           id="tspan72">transaction</tspan></text>
+    </g>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.767552;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#ArrowWideHeavy)"
+       d="m 120.03658,155.3076 17.78658,-17.78659 8.89039,8.89039"
+       id="path41" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:4.3324px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.203081"
+       x="16.120422"
+       y="55.841011"
+       id="text49"><tspan
+         sodipodi:role="line"
+         style="stroke-width:0.203081"
+         x="16.120422"
+         y="55.841011"
+         id="tspan45">* to: address</tspan><tspan
+         sodipodi:role="line"
+         style="stroke-width:0.203081"
+         x="16.120422"
+         y="61.256512"
+         id="tspan46">* from: address</tspan><tspan
+         sodipodi:role="line"
+         style="stroke-width:0.203081"
+         x="16.120422"
+         y="66.672012"
+         id="tspan47">* value: ...</tspan><tspan
+         sodipodi:role="line"
+         style="stroke-width:0.203081"
+         x="16.120422"
+         y="72.087509"
+         id="tspan48">* data: ...</tspan><tspan
+         sodipodi:role="line"
+         style="stroke-width:0.203081"
+         x="16.120422"
+         y="77.503014"
+         id="tspan49">* gas: ...</tspan></text>
+    <path
+       style="fill:#000000;fill-opacity:0;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:round;stroke-dasharray:none"
+       id="path55"
+       sodipodi:type="arc"
+       sodipodi:cx="35.26667"
+       sodipodi:cy="58.131104"
+       sodipodi:rx="29.576561"
+       sodipodi:ry="34.800232"
+       sodipodi:start="4.760759"
+       sodipodi:end="4.7587146"
+       sodipodi:open="true"
+       sodipodi:arc-type="arc"
+       d="M 36.696731,23.371574 A 29.576561,34.800232 0 0 1 64.809365,59.795969 29.576561,34.800232 0 0 1 33.866808,92.892335 29.576561,34.800232 0 0 1 5.7225441,56.501771 29.576561,34.800232 0 0 1 36.636333,23.368207" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:4.3324px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.203081"
+       x="62.295082"
+       y="77.537666"
+       id="text64"><tspan
+         sodipodi:role="line"
+         style="stroke-width:0.203081"
+         x="62.295082"
+         y="77.537666"
+         id="tspan64">encrypt</tspan></text>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.73223;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker39)"
+       d="M 58.835984,80.909734 H 81.847313"
+       id="path72" />
+  </g>
+</svg>
