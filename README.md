@@ -348,3 +348,17 @@ const shopChain = {
   "SystemOwnerSafe": "0xafB5230168994606BBaB66798B4361A051E4068F"
 }
 ```
+
+### References
+
+- [ethers getting started documentation](https://docs.ethers.org/v6/getting-started/#starting-connecting).
+- [ethers provider documentation](https://docs.ethers.org/v5/api/providers/)
+- [Optimism](https://www.optimism.io/)
+- [Shutter Network](http://shutter.network/)
+- [MEV](https://ethereum.org/en/developers/docs/mev/)
+- [Shutter Optimism Inbox contract](https://github.com/shutter-network/shop-contracts/blob/main/src/Inbox.sol)
+- [Shutter Optimism KeyBroadcastContract](https://github.com/shutter-network/shop-contracts/blob/main/src/KeyBroadcastContract.sol)
+- [shlib](https://pkg.go.dev/github.com/shutter-network/shutter/shlib@v0.1.18/shcrypto)
+- [shlib encryption](https://pkg.go.dev/github.com/shutter-network/shutter/shlib@v0.1.18/shcrypto#Encrypt)
+- [shlib decryption](https://pkg.go.dev/github.com/shutter-network/shutter/shlib@v0.1.18/shcrypto#EncryptedMessage.Decrypt)
+- [Shutter op-geth fork](https://github.com/shutter-network/op-geth)
